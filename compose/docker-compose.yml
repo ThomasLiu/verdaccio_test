@@ -1,12 +1,16 @@
 version: "2" # compose file的版本,推荐2
 
 services:
+  # web: # 定义service
+  #   image: node # 设置镜像来源
+  #   volumes: # 设置挂载路径
+  #     - ../node:/usr/src/app # 这个路径请参考前面的目录结构
+  #   working_dir: /usr/src/app
+  #   command: node app.js # 设置默认命令
   web: # 定义service
-    image: node # 设置镜像来源
+    build: ../node
     volumes: # 设置挂载路径
       - ../node:/usr/src/app # 这个路径请参考前面的目录结构
-    working_dir: /usr/src/app
-    command: node app.js # 设置默认命令
   proxy:
     image: nginx
     volumes:
